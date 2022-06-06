@@ -1,5 +1,6 @@
 import React from "react";
 import Product from "./Product/Product";
+import Navbar from "../Navbar/Navbar.jsx";
 const Products = () => {
   const [data,setData]=React.useState([])
   React.useEffect(()=>{
@@ -9,11 +10,15 @@ const Products = () => {
   },[])
   console.log("data is",data)
   return(
+    <>
+    <Navbar/>
     <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)"}}>
         {data.map((el)=>(
           <Product el={el}/>
         ))}
     </div>
+    </>
+    
   ) 
   
   
