@@ -8,9 +8,9 @@ import { AuthContext } from "./context/AuthContext";
 function App() {
   return (
     <div className="App">
-      <div>Hello</div>
+     
         <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<RequiredAuth><Home/></RequiredAuth>}></Route>
         <Route path="/login" element={<Login/>}> </Route>
         
        </Routes>

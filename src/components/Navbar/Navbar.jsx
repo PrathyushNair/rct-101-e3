@@ -6,7 +6,7 @@ import { CartContext } from "../../context/CartContext";
 
 
 const Navbar = () => {
-  const {auth}=React.useContext(AuthContext)
+  const {auth,handlelogout}=React.useContext(AuthContext)
   const {cart,setCart}=React.useContext(CartContext)
   React.useEffect(()=>{
     fetch(`http://localhost:8080/cartItems`).then((resp)=>(resp.json())).then((resp)=>{
@@ -14,10 +14,10 @@ const Navbar = () => {
     })
   },[])
   return (
-    <div data-cy="navbar">
-      <Link to="/home" data-cy="navbar-home-link">Home</Link>
-      <span data-cy="navbar-cart-items-count">Cart:{cart.length}</span>
-      <button data-cy="navbar-login-logout-button">{auth ? "Logout":"Login"}</button>
+    <div style={{display:"flex",justifyContent:"end"}} data-cy="navbar">
+      <Link to="/" data-cy="navbar-home-link">Home</Link>
+      <span data-cy="navbar-cart-items-count">Cart:({cart.length})</span>
+      <button onClick={handlelogout} data-cy="navbar-login-logout-button">{auth ? "Logout":<Link to="/login">Login</Link>}</button>
     </div>
   );
 };
